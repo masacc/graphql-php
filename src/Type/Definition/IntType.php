@@ -45,7 +45,7 @@ values. Int can represent values between -(2^31) and 2^31 - 1. ';
     public function serialize($value)
     {
         // Fast path for 90+% of cases:
-        if (is_int($value) && $value <= self::MAX_INT && $value >= self::MIN_INT) {
+        if ($value === null || (is_int($value) && $value <= self::MAX_INT && $value >= self::MIN_INT)) {
             return $value;
         }
 
